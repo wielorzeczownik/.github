@@ -27,6 +27,11 @@
       "semanticCommitType": "ci"
     },
     {
+      "matchManagers": ["dockerfile"],
+      "matchDepTypes": ["final"],
+      "semanticCommitType": "fix"
+    },
+    {
       "matchManagers": ["github-actions"],
       "matchPackageNames": ["docker/*"],
       "groupName": "docker actions"

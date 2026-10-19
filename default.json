@@ -50,6 +50,25 @@
         "actions/download-artifact"
       ],
       "groupName": "artifact actions"
+    },
+    {
+      "matchDepTypes": ["devDependencies"],
+      "semanticCommitType": "build"
+    },
+    {
+      "matchManagers": ["github-actions"],
+      "matchPackageNames": [
+        "docker/build-push-action",
+        "docker/login-action",
+        "docker/metadata-action",
+        "docker/setup-buildx-action",
+        "docker/setup-qemu-action"
+      ],
+      "groupName": "docker actions"
+    },
+    {
+      "matchPackageNames": ["typescript"],
+      "allowedVersions": "<6.1.0"
     }
   ]
 }

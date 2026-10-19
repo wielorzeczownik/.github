@@ -1,0 +1,61 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "description": "Shared Renovate preset for wielorzeczownik repositories",
+  "extends": ["group:monorepos", "group:recommended"],
+  "vulnerabilityAlerts": {
+    "enabled": true
+  },
+  "osvVulnerabilityAlerts": true,
+  "lockFileMaintenance": {
+    "enabled": true,
+    "automerge": true
+  },
+  "platformAutomerge": true,
+  "automergeType": "pr",
+  "semanticCommits": "enabled",
+  "schedule": ["before 6am on monday"],
+  "rebaseWhen": "conflicted",
+  "minimumReleaseAge": "3 days",
+  "customManagers": [
+    {
+      "customType": "regex",
+      "description": "Track the prettier version pinned in workflow run steps",
+      "fileMatch": ["^\\.github/workflows/[^/]+\\.yml$"],
+      "matchStrings": ["prettier@(?<currentValue>\\d+\\.\\d+\\.\\d+)"],
+      "depNameTemplate": "prettier",
+      "datasourceTemplate": "npm"
+    },
+    {
+      "customType": "regex",
+      "description": "Track tool versions annotated with a renovate comment",
+      "fileMatch": ["^\\.github/workflows/[^/]+\\.yml$"],
+      "matchStrings": [
+        "# renovate: datasource=(?<datasource>[a-z-]+) depName=(?<depName>\\S+)\\s+version: (?<currentValue>\\S+)"
+      ],
+      "versioningTemplate": "semver"
+    }
+  ],
+  "packageRules": [
+    {
+      "description": "Majors stay manual, everything else merges once it has soaked",
+      "matchUpdateTypes": ["minor", "patch", "pin", "digest"],
+      "automerge": true
+    },
+    {
+      "description": "Actions are pinned to a commit SHA; the soak period is what catches a compromised release, so it is longer than the default",
+      "matchManagers": ["github-actions"],
+      "pinDigests": true,
+      "minimumReleaseAge": "7 days",
+      "semanticCommitType": "ci"
+    },
+    {
+      "description": "upload-artifact and download-artifact must stay on compatible majors",
+      "matchManagers": ["github-actions"],
+      "matchPackageNames": [
+        "actions/upload-artifact",
+        "actions/download-artifact"
+      ],
+      "groupName": "artifact actions"
+    }
+  ]
+}

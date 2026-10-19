@@ -1,61 +1,34 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": ["group:monorepos", "group:recommended"],
-  "vulnerabilityAlerts": {
-    "enabled": true
-  },
+  "extends": [
+    "config:recommended",
+    ":configMigration",
+    "docker:pinDigests",
+    "helpers:pinGitHubActionDigests",
+    ":maintainLockFilesWeekly",
+    ":automergeMinor",
+    ":automergeDigest",
+    "schedule:weekly",
+    "customManagers:githubActionsVersions"
+  ],
+  "ignorePresets": [":semanticPrefixFixDepsChoreOthers"],
   "osvVulnerabilityAlerts": true,
-  "lockFileMaintenance": {
-    "enabled": true,
-    "automerge": true
-  },
-  "platformAutomerge": true,
-  "automergeType": "pr",
-  "semanticCommits": "enabled",
-  "schedule": ["before 6am on monday"],
   "rebaseWhen": "conflicted",
   "minimumReleaseAge": "3 days",
-  "customManagers": [
-    {
-      "customType": "regex",
-      "fileMatch": ["^\\.github/workflows/[^/]+\\.yml$"],
-      "matchStrings": ["prettier@(?<currentValue>\\d+\\.\\d+\\.\\d+)"],
-      "depNameTemplate": "prettier",
-      "datasourceTemplate": "npm"
-    },
-    {
-      "customType": "regex",
-      "fileMatch": ["^\\.github/workflows/[^/]+\\.yml$"],
-      "matchStrings": [
-        "# renovate: datasource=(?<datasource>[a-z-]+) depName=(?<depName>\\S+)\\s+version: (?<currentValue>\\S+)"
-      ],
-      "versioningTemplate": "semver"
-    }
-  ],
   "packageRules": [
     {
-      "matchUpdateTypes": ["minor", "patch", "pin", "digest"],
-      "automerge": true
-    },
-    {
       "matchManagers": ["github-actions"],
-      "pinDigests": true,
       "minimumReleaseAge": "7 days",
       "semanticCommitType": "ci"
     },
     {
-      "matchDepTypes": ["devDependencies"],
-      "semanticCommitType": "build"
+      "matchManagers": ["custom.regex"],
+      "matchFileNames": [".github/workflows/**"],
+      "semanticCommitType": "ci"
     },
     {
       "matchManagers": ["github-actions"],
-      "matchPackageNames": [
-        "docker/build-push-action",
-        "docker/login-action",
-        "docker/metadata-action",
-        "docker/setup-buildx-action",
-        "docker/setup-qemu-action"
-      ],
+      "matchPackageNames": ["docker/*"],
       "groupName": "docker actions"
     },
     {

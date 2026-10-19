@@ -44,14 +44,6 @@
       "semanticCommitType": "ci"
     },
     {
-      "matchManagers": ["github-actions"],
-      "matchPackageNames": [
-        "actions/upload-artifact",
-        "actions/download-artifact"
-      ],
-      "groupName": "artifact actions"
-    },
-    {
       "matchDepTypes": ["devDependencies"],
       "semanticCommitType": "build"
     },

@@ -13,6 +13,7 @@
     "customManagers:githubActionsVersions"
   ],
   "osvVulnerabilityAlerts": true,
+  "prHourlyLimit": 0,
   "rebaseWhen": "conflicted",
   "minimumReleaseAge": "3 days",
   "packageRules": [

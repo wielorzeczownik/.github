@@ -14,7 +14,7 @@
   ],
   "osvVulnerabilityAlerts": true,
   "prHourlyLimit": 0,
-  "rebaseWhen": "conflicted",
+  "rebaseWhen": "auto",
   "minimumReleaseAge": "3 days",
   "packageRules": [
     {

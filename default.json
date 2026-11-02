@@ -22,6 +22,12 @@
       "minimumReleaseAge": null
     },
     {
+      "matchDatasources": ["docker"],
+      "matchUpdateTypes": ["digest", "pinDigest"],
+      "minimumReleaseAge": null,
+      "automergeSchedule": ["* * * * 0,4-6"]
+    },
+    {
       "matchManagers": ["github-actions"],
       "minimumReleaseAge": "7 days",
       "semanticCommitType": "ci"

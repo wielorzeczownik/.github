@@ -19,7 +19,8 @@
   "packageRules": [
     {
       "matchUpdateTypes": ["lockFileMaintenance"],
-      "minimumReleaseAge": null
+      "minimumReleaseAge": null,
+      "semanticCommitType": "fix"
     },
     {
       "matchDatasources": ["docker"],

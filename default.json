@@ -38,6 +38,11 @@
       "semanticCommitType": "ci"
     },
     {
+      "matchManagers": ["custom.regex"],
+      "matchDatasources": ["crate"],
+      "versioning": "semver"
+    },
+    {
       "matchManagers": ["dockerfile"],
       "matchDepTypes": ["final"],
       "semanticCommitType": "fix"

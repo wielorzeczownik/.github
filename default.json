@@ -53,6 +53,11 @@
       "groupName": "docker actions"
     },
     {
+      "matchManagers": ["npm"],
+      "matchPackageNames": ["stylelint", "stylelint-*"],
+      "groupName": "stylelint"
+    },
+    {
       "matchPackageNames": ["typescript"],
       "allowedVersions": "<6.1.0"
     }

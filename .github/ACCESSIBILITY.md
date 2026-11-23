@@ -8,7 +8,7 @@ Most of my repositories are command line tools, self-hosted services, stream ove
 
 ## Known limitations
 
-Stream overlays are visual by design and lean on animation and color. Hardware projects have no assistive features. If a project has limitations beyond that, its README says so.
+Stream overlays are visual by design and lean on animation and color. Hardware projects have no assistive features. Most projects haven't been tested with assistive technology yet, so if something doesn't work for you, I'd like to hear about it.
 
 ## Reporting a barrier
 

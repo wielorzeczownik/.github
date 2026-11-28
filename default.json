@@ -28,6 +28,10 @@
       "minimumReleaseAge": null
     },
     {
+      "matchFileNames": ["**/docker-compose*.example.yml"],
+      "enabled": false
+    },
+    {
       "matchManagers": ["github-actions"],
       "minimumReleaseAge": "7 days",
       "semanticCommitType": "ci"
